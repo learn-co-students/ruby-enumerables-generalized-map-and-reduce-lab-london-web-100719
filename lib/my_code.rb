@@ -32,15 +32,7 @@ def reduce(source_array, starting_point = 0)
 
     elsif !!source_array[i] == source_array[i]
 
-      if source_array[i]
-
-        new_var = true
-
-      else
-
-        new_var = false
-
-      end
+      new_var = source_array[i] ? true : false
 
     end
 
