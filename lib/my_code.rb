@@ -1,26 +1,27 @@
 # Your Code Here
 
-def map(s)
-  new = []
+def map(array)
+  new_array = []
   i = 0
-  while i < s.length
-    new.push(yield(s[i]))
+  while i < array.length
+    new_array << yield(array[i])
     i += 1
   end
-  new
+  new_array
 end
 
-def reduce(s, sp=nil)
-  if sp
-    accum = sp
+
+def reduce(array, starting_value=nil)
+  if starting_value
+    sum = starting_value
     i = 0
   else
-    accum = s[0]
+    sum = array[0]
     i = 1
   end
-  while i < s.length
-    accum = yield(accum, s[i])
+  while i < array.length
+    sum = yield(sum, array[i])
     i += 1
   end
-  accum
+  sum
 end
