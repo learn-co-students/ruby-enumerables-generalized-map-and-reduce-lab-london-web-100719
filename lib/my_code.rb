@@ -1,27 +1,30 @@
 # Your Code Here
 
-def map(array)
+def map(source_array)
   new_array = []
   i = 0
-  while i < array.length
-    new_array << yield(array[i])
+  while i < source_array.length do
+    new_array.push ( yield(source_array[i]) )
     i += 1
   end
-  new_array
+
+  return new_array
 end
+  
 
-
-def reduce(array, starting_value=nil)
-  if starting_value
-    sum = starting_value
+def reduce(source_array, starting_point=nil)
+  if starting_point
+    aggregator = starting_point
     i = 0
   else
-    sum = array[0]
+    aggregator = source_array[0]
     i = 1
   end
-  while i < array.length
-    sum = yield(sum, array[i])
+
+  while i < source_array.length
+    aggregator = yield(aggregator, source_array[i]) # returns a single value
     i += 1
   end
-  sum
+
+  return aggregator
 end
